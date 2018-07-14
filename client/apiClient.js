@@ -2,9 +2,10 @@ import request from 'superagent'
 
 const rootUrl = '/api/v1'
 
-export function getFruits () {
-  return request.get(rootUrl + '/fruits')
+export function getHaiku () {
+  return request.get(rootUrl + '/haiku')
     .then(res => {
-      return res.body.fruits
+      let joke = JSON.parse(res.body.haiku.text).joke
+      return joke
     })
 }
